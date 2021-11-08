@@ -2,10 +2,10 @@
 
 use types::CharInfos;
 
-pub mod data;
-pub mod loader;
-pub mod types;
-pub mod utils;
+mod data;
+mod loader;
+mod types;
+mod utils;
 
 /// Get a single character infos
 /// ```rust

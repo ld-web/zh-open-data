@@ -1,13 +1,6 @@
 //! General/Utility functions
 
 /// Returns the unicode hex value for a given character, as a string.
-///
-/// Example :
-/// ```rust
-/// use zh_open_data::utils::get_hex;
-/// let hex_code = get_hex('我');
-/// assert_eq!(hex_code, "6211");
-/// ```
 pub fn get_hex(c: char) -> String {
   let hex = format!("{:x}", c as u32).to_uppercase();
   hex

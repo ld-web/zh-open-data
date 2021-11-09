@@ -8,4 +8,7 @@ edition = "2018"
 [dependencies]
 lazy_static = "1.4.0"
 
+[dev-dependencies]
+rusty-hook = "^0.11.2"
+
 [build-dependencies]

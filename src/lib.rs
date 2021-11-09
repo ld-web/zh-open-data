@@ -20,13 +20,13 @@ pub fn get_char_infos(character: char) -> Option<CharInfos> {
   let phonetic = data::CNS_TO_PHONETIC.get(cns_code)?;
   let stroke_info = data::CNS_TO_STROKE_INFO.get(cns_code)?;
 
-  return Some(CharInfos {
+  Some(CharInfos {
     character,
     cns_code: cns_code.to_string(),
     components: comps.to_vec(),
     phonetic: phonetic.to_vec(),
     strokes: *stroke_info,
-  });
+  })
 }
 
 #[cfg(test)]

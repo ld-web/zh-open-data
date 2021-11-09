@@ -15,24 +15,18 @@ mod utils;
 pub fn get_char_infos(character: char) -> Option<CharInfos> {
   let hex = utils::get_hex(character);
 
-  // TODO: get rid of these ugly nested if /!\
-  if let Some(cns_code) = data::UNICODE_TO_CNS.get(&hex) {
-    if let Some(comps) = data::CNS_TO_COMPONENTS.get(cns_code) {
-      if let Some(phonetic) = data::CNS_TO_PHONETIC.get(cns_code) {
-        if let Some(stroke_info) = data::CNS_TO_STROKE_INFO.get(cns_code) {
-          return Some(CharInfos {
-            character,
-            cns_code: cns_code.to_string(),
-            components: comps.to_vec(),
-            phonetic: phonetic.to_vec(),
-            strokes: *stroke_info,
-          });
-        }
-      }
-    }
-  }
+  let cns_code = data::UNICODE_TO_CNS.get(&hex)?;
+  let comps = data::CNS_TO_COMPONENTS.get(cns_code)?;
+  let phonetic = data::CNS_TO_PHONETIC.get(cns_code)?;
+  let stroke_info = data::CNS_TO_STROKE_INFO.get(cns_code)?;
 
-  None
+  return Some(CharInfos {
+    character,
+    cns_code: cns_code.to_string(),
+    components: comps.to_vec(),
+    phonetic: phonetic.to_vec(),
+    strokes: *stroke_info,
+  });
 }
 
 #[cfg(test)]

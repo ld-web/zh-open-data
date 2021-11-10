@@ -11,7 +11,7 @@ pub struct StrokeInfo {
 }
 
 #[derive(Debug)]
-pub struct CharInfos {
+pub struct CharInfo {
   pub character: char,
   pub cns_code: CnsCode,
   pub components: Components,

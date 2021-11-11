@@ -7,21 +7,29 @@ use crate::types::{CnsCode, StrokeInfo};
 
 use super::Loader;
 
+const CNS_TO_STROKE_COUNT_FILES: [&str; 1] = ["data/CNS_stroke.txt"];
 struct StrokeLoader {}
 
-const CNS_TO_STROKE_COUNT_FILES: [&str; 1] = ["data/CNS_stroke.txt"];
+impl StrokeLoader {
+  fn parse_line(line: String) -> Option<(CnsCode, StrokeInfo)> {
+    let s: Vec<&str> = line.split('\t').collect();
+    if s.len() != 2 {
+      return None;
+    }
+    let cns_code = s[0].to_string();
+    let stroke_count: u8 = s[1].to_string().parse().unwrap();
+    let stroke_info = StrokeInfo {
+      total: stroke_count,
+    };
+
+    Some((cns_code, stroke_info))
+  }
+}
 
 impl Loader<CnsCode, StrokeInfo> for StrokeLoader {
   fn process_line(map: &mut HashMap<CnsCode, StrokeInfo>, line: String) {
-    let s: Vec<&str> = line.split('\t').collect();
-    if s.len() == 2 {
-      let cns_code = s[0].to_string();
-      let stroke_count: u8 = s[1].to_string().parse().unwrap();
-      let stroke_info = StrokeInfo {
-        total: stroke_count,
-      };
-      map.insert(cns_code, stroke_info);
-    }
+    let (cns_code, stroke_info) = Self::parse_line(line).unwrap();
+    map.insert(cns_code, stroke_info);
   }
 }
 

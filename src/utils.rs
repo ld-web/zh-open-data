@@ -21,10 +21,9 @@ pub fn get_hex(c: char) -> String {
 /// ```
 pub fn get_char(hex_val: String) -> char {
   if let Ok(int_val) = u32::from_str_radix(hex_val.as_str(), 16) {
-    let character = char::from_u32(int_val).unwrap();
-    character
+    char::from_u32(int_val).unwrap()
   } else {
-    return '-';
+    '-'
   }
 }
 

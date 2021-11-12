@@ -38,7 +38,7 @@ impl Loader<CnsCode, CharInfo> for StrokeLoader {
 }
 
 /// Load and map all stroke counts into an existing HashMap
-pub fn load_into<'a>(map: &'a mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = StrokeLoader {};
 
   loader.load_into_map(map, &CNS_TO_STROKE_COUNT_FILES);

@@ -61,7 +61,7 @@ pub fn get_single_map() -> Result<HashMap<UnicodeHexVal, CnsCode>, io::Error> {
 }
 
 /// Load and map all unicode values into an existing HashMap
-pub fn load_into<'a>(map: &'a mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = UnicodeToCnsLoader {};
 
   loader.load_into_map(map, &CNS_TO_UNICODE_FILES);

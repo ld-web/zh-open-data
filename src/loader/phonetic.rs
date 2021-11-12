@@ -36,7 +36,7 @@ impl Loader<CnsCode, CharInfo> for PhoneticLoader {
 }
 
 /// Load and map all phonetics into an existing HashMap
-pub fn load_into<'a>(map: &'a mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = PhoneticLoader {};
 
   loader.load_into_map(map, &CNS_TO_PHONETIC_FILES);

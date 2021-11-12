@@ -13,16 +13,9 @@ pub type Components = Vec<Vec<String>>;
 pub type Phonetic = Vec<String>;
 
 /// Stroke informations. Meant to also contain stroke sequence in the future
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Default)]
 pub struct StrokeInfo {
   pub total: u8,
-}
-
-impl StrokeInfo {
-  /// Default constructor
-  pub fn new() -> Self {
-    StrokeInfo { total: 0 }
-  }
 }
 
 /// All character informations
@@ -43,7 +36,7 @@ impl CharInfo {
       cns_code,
       components: vec![],
       phonetic: vec![],
-      strokes: StrokeInfo::new(),
+      strokes: Default::default(),
     }
   }
 }

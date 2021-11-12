@@ -12,7 +12,9 @@ pub type Components = Vec<Vec<String>>;
 /// Possible phonetics, in Zhuyin (注音)
 pub type Phonetic = Vec<String>;
 
-/// Stroke informations. Meant to also contain stroke sequence in the future
+/// Stroke informations.
+///
+/// > *Meant to also contain stroke sequence in the future*
 #[derive(Debug, Copy, Clone, Default)]
 pub struct StrokeInfo {
   pub total: u8,

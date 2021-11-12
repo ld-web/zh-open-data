@@ -12,6 +12,21 @@ pub fn get_hex(c: char) -> String {
   hex
 }
 
+/// Returns the character for a given unicode hexadecimal value
+///
+/// Example :
+/// ```ignore
+/// let character = get_char("6211");
+/// assert_eq!(character, '我');
+/// ```
+pub fn get_char(hex_val: String) -> char {
+  if let Ok(int_val) = u32::from_str_radix(hex_val.as_str(), 16) {
+    char::from_u32(int_val).unwrap()
+  } else {
+    '-'
+  }
+}
+
 #[cfg(test)]
 mod tests {
   use super::*;
@@ -26,5 +41,12 @@ mod tests {
 
     let hex_code_3 = get_hex('所');
     assert_eq!(hex_code_3, "6240");
+  }
+
+  #[test]
+  fn hex_to_zh_char() {
+    assert_eq!(get_char(String::from("6211")), '我');
+    assert_eq!(get_char(String::from("807D")), '聽');
+    assert_eq!(get_char(String::from("6240")), '所');
   }
 }

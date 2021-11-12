@@ -1,6 +1,6 @@
 //! API entry for Chinese characters Open Data
 
-use types::CharInfos;
+use types::CharInfo;
 
 mod data;
 mod loader;
@@ -12,21 +12,12 @@ mod utils;
 /// use zh_open_data::get_char_infos;
 /// let infos = get_char_infos('我').unwrap();
 /// ```
-pub fn get_char_infos(character: char) -> Option<CharInfos> {
+pub fn get_char_infos(character: char) -> Option<CharInfo> {
   let hex = utils::get_hex(character);
-
   let cns_code = data::UNICODE_TO_CNS.get(&hex)?;
-  let comps = data::CNS_TO_COMPONENTS.get(cns_code)?;
-  let phonetic = data::CNS_TO_PHONETIC.get(cns_code)?;
-  let stroke_info = data::CNS_TO_STROKE_INFO.get(cns_code)?;
 
-  Some(CharInfos {
-    character,
-    cns_code: cns_code.to_string(),
-    components: comps.to_vec(),
-    phonetic: phonetic.to_vec(),
-    strokes: *stroke_info,
-  })
+  let char_info = data::GLOBAL_MAP.get(cns_code)?;
+  Some((*char_info).clone())
 }
 
 #[cfg(test)]

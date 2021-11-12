@@ -3,7 +3,7 @@
 /// Unicode hexadecimal representation
 pub type UnicodeHexVal = String;
 
-/// CNS (Chinese National Standard) Code from Open Data files
+/// CNS (Chinese National Standard) Code
 pub type CnsCode = String;
 
 /// Possible components combinations

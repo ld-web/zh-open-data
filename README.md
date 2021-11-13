@@ -20,12 +20,12 @@ This tool aims to provide chinese characters informations, from a given input of
 
 At this time, the tool will look into the loading directory and attempt to load the following files at runtime :
 
-- `loading_dir`/CNS2UNICODE_Unicode_2.txt
-- `loading_dir`/CNS2UNICODE_Unicode_15.txt
-- `loading_dir`/CNS2UNICODE_Unicode_BMP.txt
-- `loading_dir`/CNS_component.txt
-- `loading_dir`/CNS_phonetic.txt
-- `loading_dir`/CNS_stroke.txt
+- `load-dir`/CNS2UNICODE_Unicode_2.txt
+- `load-dir`/CNS2UNICODE_Unicode_15.txt
+- `load-dir`/CNS2UNICODE_Unicode_BMP.txt
+- `load-dir`/CNS_component.txt
+- `load-dir`/CNS_phonetic.txt
+- `load-dir`/CNS_stroke.txt
 
 ### Loading directory (`load-dir` option)
 

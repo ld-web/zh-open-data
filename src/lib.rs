@@ -4,6 +4,7 @@ use types::CharInfo;
 
 mod data;
 mod loader;
+mod opts;
 mod types;
 mod utils;
 

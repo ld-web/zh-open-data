@@ -5,9 +5,7 @@ use std::io;
 
 use crate::types::{CharInfo, CnsCode, Components};
 
-use super::Loader;
-
-const CNS_TO_COMPONENT_FILES: [&str; 1] = ["data/CNS_component.txt"];
+use super::{Loader, PathResolver};
 
 struct ComponentsLoader;
 
@@ -45,11 +43,15 @@ impl Loader<CnsCode, CharInfo> for ComponentsLoader {
   }
 }
 
+impl PathResolver for ComponentsLoader {}
+
+const CNS_TO_COMPONENT_FILES: [&str; 1] = ["CNS_component.txt"];
+
 /// Load and map all components into an existing HashMap
 pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = ComponentsLoader {};
 
-  loader.load_into_map(map, &CNS_TO_COMPONENT_FILES);
+  loader.load_into_map(map, &loader.get_files_paths(&CNS_TO_COMPONENT_FILES));
 
   Ok(())
 }

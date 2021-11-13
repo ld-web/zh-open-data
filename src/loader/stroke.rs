@@ -5,9 +5,8 @@ use std::io;
 
 use crate::types::{CharInfo, CnsCode, StrokeInfo};
 
-use super::Loader;
+use super::{Loader, PathResolver};
 
-const CNS_TO_STROKE_COUNT_FILES: [&str; 1] = ["data/CNS_stroke.txt"];
 struct StrokeLoader {}
 
 impl StrokeLoader {
@@ -37,11 +36,15 @@ impl Loader<CnsCode, CharInfo> for StrokeLoader {
   }
 }
 
+impl PathResolver for StrokeLoader {}
+
+const CNS_TO_STROKE_COUNT_FILES: [&str; 1] = ["CNS_stroke.txt"];
+
 /// Load and map all stroke counts into an existing HashMap
 pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = StrokeLoader {};
 
-  loader.load_into_map(map, &CNS_TO_STROKE_COUNT_FILES);
+  loader.load_into_map(map, &loader.get_files_paths(&CNS_TO_STROKE_COUNT_FILES));
 
   Ok(())
 }

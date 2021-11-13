@@ -7,6 +7,8 @@ use std::{
   io::{BufRead, BufReader},
 };
 
+use crate::opts;
+
 pub mod char_info;
 pub mod components;
 pub mod phonetic;
@@ -15,14 +17,14 @@ pub mod unicode_to_cns;
 
 trait Loader<K, V> {
   /// Load and map given paths into an existing map
-  fn load_into_map(&self, map: &mut HashMap<K, V>, paths: &[&str]) {
+  fn load_into_map(&self, map: &mut HashMap<K, V>, paths: &[String]) {
     for path in paths.iter() {
       Self::load_into(map, path).unwrap();
     }
   }
 
   /// Get a single map with given paths loaded and mapped into it
-  fn get_map(&self, paths: &[&str]) -> Result<HashMap<K, V>, io::Error> {
+  fn get_map(&self, paths: &[String]) -> Result<HashMap<K, V>, io::Error> {
     let mut data: HashMap<K, V> = HashMap::new();
 
     for path in paths.iter() {
@@ -47,4 +49,20 @@ trait Loader<K, V> {
 
   /// Given a map with concrete types, and a line, do something : process the line and put the result into the map
   fn process_line(map: &mut HashMap<K, V>, line: String);
+}
+
+trait PathResolver {
+  /// Given an array of filenames (only filenames, not full path), resolve the full path based on provided CLI options
+  ///
+  /// Essentially, it will build all the paths by concatenating the `load-dir` option with the filename
+  fn get_files_paths(&self, filenames: &[&str]) -> Vec<String> {
+    let mut file_paths: Vec<String> = Vec::new();
+
+    for filename in filenames.iter() {
+      let path = format!("{}/{}", opts::OPTS.load_dir, filename);
+      file_paths.push(path);
+    }
+
+    file_paths
+  }
 }

@@ -5,9 +5,7 @@ use std::io;
 
 use crate::types::{CharInfo, CnsCode};
 
-use super::Loader;
-
-const CNS_TO_PHONETIC_FILES: [&str; 1] = ["data/CNS_phonetic.txt"];
+use super::{Loader, PathResolver};
 
 struct PhoneticLoader {}
 
@@ -35,11 +33,15 @@ impl Loader<CnsCode, CharInfo> for PhoneticLoader {
   }
 }
 
+impl PathResolver for PhoneticLoader {}
+
+const CNS_TO_PHONETIC_FILES: [&str; 1] = ["CNS_phonetic.txt"];
+
 /// Load and map all phonetics into an existing HashMap
 pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = PhoneticLoader {};
 
-  loader.load_into_map(map, &CNS_TO_PHONETIC_FILES);
+  loader.load_into_map(map, &loader.get_files_paths(&CNS_TO_PHONETIC_FILES));
 
   Ok(())
 }

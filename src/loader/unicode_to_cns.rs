@@ -1,14 +1,12 @@
 //! Implementation for CNS code to unicode file(s)
 
-use std::collections::HashMap;
-use std::io;
-
+use super::{Loader, PathResolver};
 use crate::{
   types::{CharInfo, CnsCode, UnicodeHexVal},
   utils,
 };
-
-use super::{Loader, PathResolver};
+use anyhow::Result;
+use std::collections::HashMap;
 
 struct UnicodeToCnsLoader {}
 
@@ -56,7 +54,7 @@ const CNS_TO_UNICODE_FILES: [&str; 3] = [
 ];
 
 /// This function will give a HashMap with unicode hex value as keys and CNS Code as values
-pub fn get_single_map(load_dir: &str) -> Result<HashMap<UnicodeHexVal, CnsCode>, io::Error> {
+pub fn get_single_map(load_dir: &str) -> Result<HashMap<UnicodeHexVal, CnsCode>> {
   let loader = UnicodeToCnsLoader {};
   let file_paths = loader.get_files_paths(load_dir, &CNS_TO_UNICODE_FILES);
   let data = loader.get_map(&file_paths)?;
@@ -64,7 +62,7 @@ pub fn get_single_map(load_dir: &str) -> Result<HashMap<UnicodeHexVal, CnsCode>,
 }
 
 /// Load and map all unicode values into an existing HashMap
-pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<()> {
   let loader = UnicodeToCnsLoader {};
   let file_paths = loader.get_files_paths(load_dir, &CNS_TO_UNICODE_FILES);
 

@@ -1,6 +1,5 @@
+use anyhow::Result;
 use clap::{crate_version, Parser};
-use std::error::Error;
-
 use zh_open_data::OpenData;
 
 /// Options structure
@@ -15,7 +14,7 @@ pub struct Opts {
   pub input: String,
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() -> Result<()> {
   let opts: Opts = Opts::parse();
   let chars: Vec<char> = opts.input.chars().collect();
 

@@ -1,11 +1,9 @@
 //! Implementation for CNS code to stroke info file(s)
 
-use std::collections::HashMap;
-use std::io;
-
-use crate::types::{CharInfo, CnsCode, StrokeInfo};
-
 use super::{Loader, PathResolver};
+use crate::types::{CharInfo, CnsCode, StrokeInfo};
+use anyhow::Result;
+use std::collections::HashMap;
 
 struct StrokeLoader {}
 
@@ -41,7 +39,7 @@ impl PathResolver for StrokeLoader {}
 const CNS_TO_STROKE_COUNT_FILES: [&str; 1] = ["CNS_stroke.txt"];
 
 /// Load and map all stroke counts into an existing HashMap
-pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<()> {
   let loader = StrokeLoader {};
   let file_paths = loader.get_files_paths(load_dir, &CNS_TO_STROKE_COUNT_FILES);
 

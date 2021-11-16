@@ -1,7 +1,6 @@
 //! API entry for Chinese characters Open Data
 
 use std::collections::HashMap;
-
 use types::{CharInfo, CnsCode, UnicodeHexVal};
 
 mod loader;

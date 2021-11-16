@@ -1,11 +1,9 @@
 //! Implementation for CNS code to phonetic file(s) (Zhuyin / 注音)
 
-use std::collections::HashMap;
-use std::io;
-
-use crate::types::{CharInfo, CnsCode};
-
 use super::{Loader, PathResolver};
+use crate::types::{CharInfo, CnsCode};
+use anyhow::Result;
+use std::collections::HashMap;
 
 struct PhoneticLoader {}
 
@@ -38,7 +36,7 @@ impl PathResolver for PhoneticLoader {}
 const CNS_TO_PHONETIC_FILES: [&str; 1] = ["CNS_phonetic.txt"];
 
 /// Load and map all phonetics into an existing HashMap
-pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<()> {
   let loader = PhoneticLoader {};
   let file_paths = loader.get_files_paths(load_dir, &CNS_TO_PHONETIC_FILES);
 

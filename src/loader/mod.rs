@@ -1,7 +1,7 @@
 //! Generic trait for file loading
 
+use anyhow::Result;
 use std::collections::HashMap;
-use std::io;
 use std::{
   fs::File,
   io::{BufRead, BufReader},
@@ -22,7 +22,7 @@ trait Loader<K, V> {
   }
 
   /// Get a single map with given paths loaded and mapped into it
-  fn get_map(&self, paths: &[String]) -> Result<HashMap<K, V>, io::Error> {
+  fn get_map(&self, paths: &[String]) -> Result<HashMap<K, V>> {
     let mut data: HashMap<K, V> = HashMap::new();
 
     for path in paths.iter() {
@@ -33,7 +33,7 @@ trait Loader<K, V> {
   }
 
   /// Load a given file into a given map
-  fn load_into(map: &mut HashMap<K, V>, path: &str) -> Result<(), io::Error> {
+  fn load_into(map: &mut HashMap<K, V>, path: &str) -> Result<()> {
     let file = File::open(path)?;
 
     let reader = BufReader::new(file);

@@ -1,11 +1,9 @@
 //! Implementation for CNS code to components file(s)
 
-use std::collections::HashMap;
-use std::io;
-
-use crate::types::{CharInfo, CnsCode, Components};
-
 use super::{Loader, PathResolver};
+use crate::types::{CharInfo, CnsCode, Components};
+use anyhow::Result;
+use std::collections::HashMap;
 
 struct ComponentsLoader;
 
@@ -48,7 +46,7 @@ impl PathResolver for ComponentsLoader {}
 const CNS_TO_COMPONENT_FILES: [&str; 1] = ["CNS_component.txt"];
 
 /// Load and map all components into an existing HashMap
-pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<()> {
   let loader = ComponentsLoader {};
   let file_paths = loader.get_files_paths(load_dir, &CNS_TO_COMPONENT_FILES);
 

@@ -13,9 +13,12 @@ struct Opts {
   pub load_dir: String,
 }
 
+/// Possible lookup results
 #[derive(Serialize)]
 enum LookupResult {
+  /// If found, will contain the character informations
   Found(CharInfo),
+  /// If not found, will contain a message
   NotFound(String),
 }
 

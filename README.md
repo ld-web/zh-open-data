@@ -1,5 +1,7 @@
 # Chinese (中文) characters Open Data
 
+[![Build Status](https://app.travis-ci.com/ld-web/zh-open-data.svg?branch=master)](https://app.travis-ci.com/ld-web/zh-open-data)
+
 This tool aims to provide chinese characters informations, from a given input of one or more characters.
 
 > Right now it works as a CLI tool, in the future it will be an API giving data as serialized JSON objects

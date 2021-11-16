@@ -56,17 +56,19 @@ const CNS_TO_UNICODE_FILES: [&str; 3] = [
 ];
 
 /// This function will give a HashMap with unicode hex value as keys and CNS Code as values
-pub fn get_single_map() -> Result<HashMap<UnicodeHexVal, CnsCode>, io::Error> {
+pub fn get_single_map(load_dir: &str) -> Result<HashMap<UnicodeHexVal, CnsCode>, io::Error> {
   let loader = UnicodeToCnsLoader {};
-  let data = loader.get_map(&loader.get_files_paths(&CNS_TO_UNICODE_FILES))?;
+  let file_paths = loader.get_files_paths(load_dir, &CNS_TO_UNICODE_FILES);
+  let data = loader.get_map(&file_paths)?;
   Ok(data)
 }
 
 /// Load and map all unicode values into an existing HashMap
-pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = UnicodeToCnsLoader {};
+  let file_paths = loader.get_files_paths(load_dir, &CNS_TO_UNICODE_FILES);
 
-  loader.load_into_map(map, &loader.get_files_paths(&CNS_TO_UNICODE_FILES));
+  loader.load_into_map(map, &file_paths);
 
   Ok(())
 }

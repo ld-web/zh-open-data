@@ -7,8 +7,6 @@ use std::{
   io::{BufRead, BufReader},
 };
 
-use crate::opts;
-
 pub mod char_info;
 pub mod components;
 pub mod phonetic;
@@ -55,11 +53,11 @@ trait PathResolver {
   /// Given an array of filenames (only filenames, not full path), resolve the full path based on provided CLI options
   ///
   /// Essentially, it will build all the paths by concatenating the `load-dir` option with the filename
-  fn get_files_paths(&self, filenames: &[&str]) -> Vec<String> {
+  fn get_files_paths(&self, load_dir: &str, filenames: &[&str]) -> Vec<String> {
     let mut file_paths: Vec<String> = Vec::new();
 
     for filename in filenames.iter() {
-      let path = format!("{}/{}", opts::OPTS.load_dir, filename);
+      let path = format!("{}/{}", load_dir, filename);
       file_paths.push(path);
     }
 

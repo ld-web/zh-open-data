@@ -48,10 +48,11 @@ impl PathResolver for ComponentsLoader {}
 const CNS_TO_COMPONENT_FILES: [&str; 1] = ["CNS_component.txt"];
 
 /// Load and map all components into an existing HashMap
-pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = ComponentsLoader {};
+  let file_paths = loader.get_files_paths(load_dir, &CNS_TO_COMPONENT_FILES);
 
-  loader.load_into_map(map, &loader.get_files_paths(&CNS_TO_COMPONENT_FILES));
+  loader.load_into_map(map, &file_paths);
 
   Ok(())
 }

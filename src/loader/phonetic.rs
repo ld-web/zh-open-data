@@ -38,10 +38,11 @@ impl PathResolver for PhoneticLoader {}
 const CNS_TO_PHONETIC_FILES: [&str; 1] = ["CNS_phonetic.txt"];
 
 /// Load and map all phonetics into an existing HashMap
-pub fn load_into(map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
+pub fn load_into(load_dir: &str, map: &mut HashMap<CnsCode, CharInfo>) -> Result<(), io::Error> {
   let loader = PhoneticLoader {};
+  let file_paths = loader.get_files_paths(load_dir, &CNS_TO_PHONETIC_FILES);
 
-  loader.load_into_map(map, &loader.get_files_paths(&CNS_TO_PHONETIC_FILES));
+  loader.load_into_map(map, &file_paths);
 
   Ok(())
 }

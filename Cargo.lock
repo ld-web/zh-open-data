@@ -330,6 +330,5 @@ name = "zh_open_data"
 version = "0.1.0"
 dependencies = [
  "clap",
- "lazy_static",
  "rusty-hook",
 ]

@@ -1,5 +1,7 @@
 //! Custom types and alias
 
+use serde_derive::Serialize;
+
 /// Unicode hexadecimal representation
 pub type UnicodeHexVal = String;
 
@@ -15,13 +17,13 @@ pub type Phonetic = Vec<String>;
 /// Stroke informations.
 ///
 /// > *Meant to also contain stroke sequence in the future*
-#[derive(Debug, Copy, Clone, Default)]
+#[derive(Debug, Copy, Clone, Default, Serialize)]
 pub struct StrokeInfo {
   pub total: u8,
 }
 
 /// All character informations
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CharInfo {
   pub character: char,
   pub cns_code: CnsCode,

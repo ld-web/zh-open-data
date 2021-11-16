@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use types::{CharInfo, CnsCode, UnicodeHexVal};
 
 mod loader;
-mod types;
+pub mod types;
 mod utils;
 
 pub struct OpenData {

@@ -1,10 +1,14 @@
-# Chinese (中文) characters Open Data
+# Chinese (中文) characters Open Data API
 
 [![Build Status](https://app.travis-ci.com/ld-web/zh-open-data.svg?branch=master)](https://app.travis-ci.com/ld-web/zh-open-data)
 
-This tool aims to provide chinese characters informations, from a given input of one or more characters.
+This API aims to provide chinese characters informations, from a given input of one or more characters.
 
-> Right now it works as a CLI tool, in the future it will be an API giving data as serialized JSON objects
+## Usage
+
+There is a single endpoint : `/lookup`
+
+Provide any character or series of characters you want after : `/lookup/你是哪國人`
 
 ## Provided informations
 

@@ -1,11 +1,16 @@
 //! API entry for Chinese characters Open Data
 
+use once_cell::sync::OnceCell;
 use std::collections::HashMap;
 use types::{CharInfo, CnsCode, UnicodeHexVal};
 
+pub mod filters;
 mod loader;
-pub mod types;
+mod types;
 mod utils;
+
+/// Shared Open Data
+pub static DATA: OnceCell<OpenData> = OnceCell::new();
 
 /// Main data structures
 pub struct OpenData {

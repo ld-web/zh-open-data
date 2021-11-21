@@ -1,0 +1,4 @@
+target/
+tests/
+.github/
+.git/

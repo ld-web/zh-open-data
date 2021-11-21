@@ -16,6 +16,6 @@ async fn main() {
   zh_open_data::DATA.get_or_init(|| OpenData::build(&opts.load_dir));
 
   warp::serve(filters::lookup())
-    .run(([127, 0, 0, 1], 8900))
+    .run(([0, 0, 0, 0], 8900))
     .await;
 }

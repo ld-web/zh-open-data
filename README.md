@@ -59,3 +59,19 @@ cargo run -- -l /your/custom/directory 我是
 ## Documentation
 
 The documentation is auto-generated and deployed on [Github Pages](https://ld-web.github.io/zh-open-data/).
+
+## Docker
+
+A public image is available :
+
+```sh
+docker pull ghcr.io/ld-web/zh-open-data:latest
+```
+
+To run an instance, map a local port to the corresponding Docker exposed port (right now `8900`, in the future may become a CLI option), and create a volume between the folder containing the actual Open Data files and the container's `data` directory, where the application loads the files.
+
+### Example
+
+```sh
+docker run -d --name zh_open_data -v /path/to/data:/app/data -p 8900:8900 ghcr.io/ld-web/zh-open-data
+```

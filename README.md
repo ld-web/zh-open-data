@@ -4,6 +4,13 @@
 
 This API aims to provide chinese characters informations, from a given input of one or more characters.
 
+- [Usage](#usage)
+- [Provided informations](#provided-informations)
+- [File loading](#file-loading)
+- [Example CLI usage](#example-cli-usage)
+- [Documentation](#documentation)
+- [Docker](#docker)
+
 ## Usage
 
 There is a single endpoint : `/lookup`
@@ -43,7 +50,7 @@ So if you want to change the directory where the tool will look, create and put 
 
 > You can find a ZIP archive of Chinese characters Open Data [here](https://data.gov.tw/dataset/5961)
 
-## Example usage
+## Example CLI usage
 
 ```bash
 # Using cargo

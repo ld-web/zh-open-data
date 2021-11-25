@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["filters","API endpoints"],["loader","Generic trait for file loading"],["types","Custom types and alias"],["utils","General/Utility functions"]],"static":[["DATA","Shared Open Data"]],"struct":[["OpenData","Main data structures"]]});

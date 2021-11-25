@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["zh_open_data"];

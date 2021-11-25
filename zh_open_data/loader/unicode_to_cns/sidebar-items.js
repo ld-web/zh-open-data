@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CNS_TO_UNICODE_FILES",""]],"fn":[["get_single_map","This function will give a HashMap with unicode hex value as keys and CNS Code as values"],["load_into","Load and map all unicode values into an existing HashMap"]],"struct":[["UnicodeToCnsLoader",""]]});

@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["zh_open_data"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.56.1/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"zh_open_data/types/struct.StrokeInfo.html\" title=\"struct zh_open_data::types::StrokeInfo\">StrokeInfo</a>","synthetic":false,"types":["zh_open_data::types::StrokeInfo"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

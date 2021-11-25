@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["get_char","Returns the character for a given unicode hexadecimal value"],["get_hex","Returns the unicode hex value for a given character, as a string."]]});

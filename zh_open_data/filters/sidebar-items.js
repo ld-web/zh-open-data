@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["LookupResult","Possible lookup results"]],"fn":[["lookup","Lookup a character or a series of characters into Open Data informations"]]});

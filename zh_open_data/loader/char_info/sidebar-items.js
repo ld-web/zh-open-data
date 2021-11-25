@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["get_global_map","Loads the global map containing all characters informations, each merged into a CharInfo struct"]]});

@@ -7,7 +7,7 @@ This API aims to provide chinese characters informations, from a given input of 
 - [Usage](#usage)
 - [Provided informations](#provided-informations)
 - [File loading](#file-loading)
-- [Example CLI usage](#example-cli-usage)
+- [CLI usage](#cli-usage)
 - [Documentation](#documentation)
 - [Docker](#docker)
 
@@ -50,7 +50,9 @@ So if you want to change the directory where the tool will look, create and put 
 
 > You can find a ZIP archive of Chinese characters Open Data [here](https://data.gov.tw/dataset/5961)
 
-## Example CLI usage
+## CLI usage
+
+If you want to use the binary as a CLI tool, checkout the [CLI-v1.0 tag](https://github.com/ld-web/zh-open-data/tree/cli-v1.0).
 
 ```bash
 # Using cargo
